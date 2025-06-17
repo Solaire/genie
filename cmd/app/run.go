@@ -28,7 +28,7 @@ func Run(ctx context.Context, cmd *cli.Command) error {
 	switch {
 	case game.LaunchCmd != "":
 		// Launch using platform-specific command
-		proc = exec.Command("cmd", "/C", "start", "", game.LaunchCmd)
+		proc = exec.Command("rundll32.exe", "url.dll,FileProtocolHandler", game.LaunchCmd)
 
 	case game.Executable != "":
 		// Launch directly from executable
