@@ -2,6 +2,7 @@ package ubisoft
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/solaire/genie/internal/utils"
 	"github.com/solaire/genie/pkg/models"
@@ -49,7 +50,7 @@ func (s *Scanner) ScanGames() ([]models.Game, error) {
 		for _, g := range cache {
 			if data, err := parseGameYaml([]byte(g.GameYaml)); err == nil {
 				game := models.Game{
-					Name:       data.Root.Name,
+					Name:       strings.TrimSpace(data.Root.Name),
 					Platform:   "ubisoft",
 					Path:       installs[fmt.Sprint(g.GameID)],
 					Executable: data.Root.StartGame.Online.Executables[0].Path.Relative,

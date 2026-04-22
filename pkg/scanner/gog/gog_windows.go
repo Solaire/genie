@@ -9,6 +9,7 @@ import (
 	"io/fs"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/solaire/genie/internal/utils"
 	"github.com/solaire/genie/pkg/models"
@@ -103,7 +104,7 @@ func findInstalledGames() ([]models.Game, error) {
 		}
 
 		game := models.Game{
-			Name:       name,
+			Name:       strings.TrimSpace(name),
 			Platform:   "gog",
 			Path:       path,
 			Executable: executable,

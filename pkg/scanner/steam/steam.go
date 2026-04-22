@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/solaire/genie/pkg/models"
 )
@@ -126,7 +127,7 @@ func parseAppManifestFile(manifestPath, libraryFolder string) (*models.Game, err
 
 	game_dir := filepath.Join(libraryFolder, "common", install_dir)
 	return &models.Game{
-		Name:       name,
+		Name:       strings.TrimSpace(name),
 		Platform:   "steam",
 		Path:       game_dir,
 		Executable: "",

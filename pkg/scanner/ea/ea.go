@@ -1,6 +1,10 @@
 package ea
 
-import "github.com/solaire/genie/pkg/models"
+import (
+	"strings"
+
+	"github.com/solaire/genie/pkg/models"
+)
 
 // Used to be called Origin...
 // ... now Scanner App
@@ -39,6 +43,7 @@ func (s *Scanner) ScanGames() ([]models.Game, error) {
 		if err != nil {
 			return nil, err
 		}
+		game.Name = strings.TrimSpace(game.Name)
 		games = append(games, *game)
 	}
 
