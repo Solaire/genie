@@ -1,6 +1,8 @@
 package battlenet
 
 import (
+	"strings"
+
 	"github.com/solaire/genie/pkg/logger"
 	"github.com/solaire/genie/pkg/models"
 )
@@ -51,6 +53,7 @@ func (s *Scanner) ScanGames() ([]models.Game, error) {
 			logger.Printf("ERROR building game data: %v\n", err)
 			continue
 		}
+		game.Name = strings.TrimSpace(game.Name)
 
 		games = append(games, *game)
 	}
